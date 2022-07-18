@@ -6,7 +6,7 @@ from keras.preprocessing.image import ImageDataGenerator
 
 image_x, image_y = 200, 200
 batch_size = 64
-train_dir = "/home/ayush/Desktop/Dev/Emojinator/Emojinator_V3/gestures"
+train_dir = "/home/ayush/Desktop/Dev/Gesture-Identification/gestures"
 
 
 def keras_model(image_x, image_y):
@@ -22,7 +22,7 @@ def keras_model(image_x, image_y):
     model.add(Dense(num_of_classes, activation='softmax'))
 
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-    filepath = "emojinator_v3.h5"
+    filepath = "GestureModel.h5"
     checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
     callbacks_list = [checkpoint]
 
@@ -64,7 +64,7 @@ def main():
     scores = model.evaluate_generator(generator=validation_generator, steps=64)
     print("CNN Error: %.2f%%" % (100 - scores[1] * 100))
 
-    model.save('emojinator_v3.h5')
+    model.save('GestureModel.h5')
 
 
 main()
