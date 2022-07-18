@@ -73,3 +73,7 @@ def main(g_id):
                 break
             cv2.imshow("Capturing gesture", image)
             cv2.imshow("Res", res)
+
+
+g_id = input("Enter gesture number: ")
+main(g_id)
