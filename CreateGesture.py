@@ -1,6 +1,6 @@
-import cv2
 import os
 import mediapipe as mp
+import cv2
 
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
@@ -9,7 +9,9 @@ image_x, image_y = 200, 200
 
 cap = cv2.VideoCapture(0)
 
-
+def create_folder(folder_name):
+    if not os.path.exists(folder_name):
+        os.mkdir(folder_name)
 
 def main(g_id):
     total_pics = 1200
